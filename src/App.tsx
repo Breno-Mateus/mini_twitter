@@ -1,9 +1,10 @@
+import Login from "./components/Login/Login";
 
 function App() {
 
   return (
     <>
-      <p>Olá mundo!</p>
+      <Login />
     </>
   );
 }
