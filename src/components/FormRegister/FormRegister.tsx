@@ -2,8 +2,20 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import InputForms from "../InputForms/InputForms";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema, type RegisterSchema } from "../../schemas/registerSchema";
 
 function FormRegister() {
+
+  const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm<RegisterSchema>({
+    resolver: zodResolver(registerSchema),
+  });
+
+  async function onSubmit(data: RegisterSchema) {
+    console.log(data);
+  }
+
   return(
     <>
       <div className="w-full">
@@ -11,13 +23,18 @@ function FormRegister() {
         <p className="text-base font-normal">Por favor, insira os dados solicitados para fazer cadastro.</p>
       </div>
 
-      <form className="w-full flex flex-col gap-5">
+      <form 
+        className="w-full flex flex-col gap-5"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <InputForms
           label="Nome"
           id="name"
           type="text"
           placeholder="Insira o seu nome"
           icon={<IoPersonOutline className="text-2xl"/>}
+          error={errors.name}
+          {...register("name")}
         />
 
         <InputForms
@@ -26,6 +43,8 @@ function FormRegister() {
           type="email"
           placeholder="Insira o seu e-mail"
           icon={<HiOutlineMail className="text-2xl"/>}
+          error={errors.email}
+          {...register("email")}
         />
 
         <InputForms
@@ -34,9 +53,13 @@ function FormRegister() {
           type="password"
           placeholder="Insira a sua senha"
           icon={<IoEyeOutline className="text-2xl"/>}
+          error={errors.password}
+          {...register("password")}
         />
 
-        <button type="submit" className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold">Continuar</button>
+        <button type="submit" className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold">
+          {isSubmitting ? "Cadastrando..." : "Continuar"}
+        </button>
       </form>
 
       <p className="text-center text-[12px] font-normal text-[#02274F] w-[320px]">Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
