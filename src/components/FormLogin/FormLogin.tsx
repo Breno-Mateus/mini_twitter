@@ -1,5 +1,6 @@
 import { HiOutlineMail } from "react-icons/hi";
 import { IoEyeOutline } from "react-icons/io5";
+import InputForms from "../InputForms/InputForms";
 
 function FormLogin() {
   return(
@@ -10,31 +11,21 @@ function FormLogin() {
       </div>
 
       <form className="w-full flex flex-col gap-5">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email">E-mail</label>
-          <div className="bg-white rounded-md border border-borderPrimary p-4 flex items-center justify-between">
-            <input 
-              id="email" 
-              type="email"
-              placeholder="Insira o seu e-mail"
-              className="focus:outline-none focus:ring-0 placeholder:text-secundary w-9/12"
-            />
-            <HiOutlineMail className="text-2xl"/>
-          </div>
-        </div>
+        <InputForms
+          label="E-mail"
+          id="email"
+          type="email"
+          placeholder="Insira o seu e-mail"
+          icon={<HiOutlineMail className="text-2xl"/>}
+        />
 
-        <div className="flex flex-col gap-2">
-          <label htmlFor="password">Senha</label>
-          <div className="bg-white rounded-md border border-borderPrimary p-4 flex items-center justify-between">
-            <input 
-              id="password" 
-              type="password"
-              placeholder="Insira o seu senha"
-              className="focus:outline-none focus:ring-0 placeholder:text-secundary w-9/12"
-            />
-            <IoEyeOutline className="text-2xl"/>
-          </div>
-        </div>
+        <InputForms
+          label="Senha"
+          id="password"
+          type="password"
+          placeholder="Insira a sua senha"
+          icon={<IoEyeOutline className="text-2xl"/>}
+        />
 
         <button type="submit" className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold">Continuar</button>
       </form>
