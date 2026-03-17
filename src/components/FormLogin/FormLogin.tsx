@@ -4,15 +4,22 @@ import InputForms from "../InputForms/InputForms";
 import { useForm } from "react-hook-form";
 import { loginSchema, type LoginSchema } from "../../schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "../../hooks/useAuth";
 
 function FormLogin() {
 
-  const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm<LoginSchema>({
+  const { register, handleSubmit, formState: {errors} } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
 
+  const { login, isLoading } = useAuth();
+
   async function onSubmit(data: LoginSchema) {
-    console.log(data);
+    try {
+      await login(data);
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   return(
@@ -46,8 +53,12 @@ function FormLogin() {
           {...register("password")}
         />
 
-        <button type="submit" className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold">
-          {isSubmitting ? "Entrando..." : "Continuar"}
+        <button 
+          type="submit"
+          disabled={isLoading} 
+          className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold"
+        >
+          {isLoading ? "Entrando..." : "Continuar"}
         </button>
       </form>
 
