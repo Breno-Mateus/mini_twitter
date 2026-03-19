@@ -1,6 +1,9 @@
 import { CiImageOn } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 function CardPublication() {
+  const navigate = useNavigate();
+
   return (
     <div className="border border-borderPrimary rounded-lg shadow-lg p-4 flex flex-col gap-4 bg-white">
       <div className="border-b border-borderPrimary">
@@ -13,11 +16,18 @@ function CardPublication() {
       </div>
 
       <div className="flex justify-between">
-        <button>
+        <button
+          onClick={() => navigate("/logi", { state: { tab: 'login' } })}
+        >
           <CiImageOn className="text-textPrimary text-3xl hover:cursor-pointer"/>
         </button>
         
-        <button className="bg-textPrimary rounded-3xl border border-borderPrimary py-2 px-4 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer">Postar</button>
+        <button 
+          className="bg-textPrimary rounded-3xl border border-borderPrimary py-2 px-4 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
+          onClick={() => navigate("/logi", { state: { tab: 'login' } })}
+        >
+          Postar
+        </button>
       </div>
     </div>
   );
