@@ -5,15 +5,22 @@ import InputForms from "../InputForms/InputForms";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterSchema } from "../../schemas/registerSchema";
+import { useRegister } from "../../hooks/useRegister"; 
 
 function FormRegister() {
 
-  const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm<RegisterSchema>({
+  const { register, handleSubmit, formState: {errors} } = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
   });
 
+  const { registerUser, isLoading, errorMessage } = useRegister();
+
   async function onSubmit(data: RegisterSchema) {
-    console.log(data);
+    try {
+      await registerUser(data);
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   return(
@@ -57,8 +64,18 @@ function FormRegister() {
           {...register("password")}
         />
 
-        <button type="submit" className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold">
-          {isSubmitting ? "Cadastrando..." : "Continuar"}
+        {errorMessage && (
+          <p className="text-red-500 text-sm font-semibold text-center mb-2">
+            {errorMessage}
+          </p>
+        )}
+
+        <button 
+          type="submit"
+          disabled={isLoading} 
+          className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold"
+        >
+          {isLoading ? "Cadastrando..." : "Continuar"}
         </button>
       </form>
 
