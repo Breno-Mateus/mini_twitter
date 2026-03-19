@@ -8,6 +8,17 @@
   --color-textPrimary: #0D93F2;
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
   background-color: var(--color-primary);
   font-family: "Manrope", sans-serif;
