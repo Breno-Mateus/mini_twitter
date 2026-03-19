@@ -2,11 +2,15 @@ import ButtonForms from "../ButtonForms/ButtonForms";
 import FormLogin from "../FormLogin/FormLogin";
 import { useState } from "react";
 import FormRegister from "../FormRegister/FormRegister";
-
+import { useLocation } from "react-router-dom";
 
 function Login() {
 
-  const [ currentForm, setCurrentForm ] = useState("login");
+  const location = useLocation();
+
+  const homeTab = location.state?.tab || "login";
+
+  const [ currentForm, setCurrentForm ] = useState(homeTab);
 
   return (
     <main className="flex flex-col justify-center items-center min-h-screen gap-6 p-30">
