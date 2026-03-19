@@ -1,4 +1,4 @@
-import { HiOutlineMail } from "react-icons/hi";
+import { AiOutlineMail } from "react-icons/ai";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import InputForms from "../InputForms/InputForms";
@@ -49,7 +49,7 @@ function FormRegister() {
           id="email"
           type="email"
           placeholder="Insira o seu e-mail"
-          icon={<HiOutlineMail className="text-2xl"/>}
+          icon={<AiOutlineMail className="text-2xl"/>}
           error={errors.email}
           {...register("email")}
         />
