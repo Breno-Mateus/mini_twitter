@@ -73,7 +73,7 @@ function FormRegister() {
         <button 
           type="submit"
           disabled={isLoading} 
-          className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold"
+          className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
         >
           {isLoading ? "Cadastrando..." : "Continuar"}
         </button>
