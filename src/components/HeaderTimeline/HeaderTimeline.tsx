@@ -43,10 +43,10 @@ function HeaderTimeline() {
   }, [inputValue, setSearchParams, searchParams]);
 
   return(
-    <header className="flex-none px-4 md:px-10 py-3 flex flex-wrap justify-between items-center gap-4 border-b border-borderPrimary">
-      <h1 className="text-base md:text-lg font-bold text-textPrimary">Mini Twitter</h1>
+    <header className="flex-none px-4 md:px-10 py-3 flex flex-wrap justify-between items-center gap-4 border-b border-borderPrimary dark:border-darkBorder">
+      <h1 className="text-base md:text-lg font-bold text-textPrimary dark:text-white">Mini Twitter</h1>
       
-      <div className="flex items-center gap-1 bg-white py-2 px-4 rounded-md border border-borderPrimary text-sm w-full md:w-80 order-last md:order-0">
+      <div className="flex items-center gap-1 bg-white dark:bg-darkSecudary py-2 px-4 rounded-md border border-borderPrimary dark:border-darkBorder text-sm w-full md:w-80 order-last md:order-0">
         <FiSearch />
         <input 
           type="text"
@@ -60,7 +60,7 @@ function HeaderTimeline() {
       {token != null ? (
         <div className="flex items-center gap-2">
           <button 
-            className="bg-textPrimary p-2 text-white text-lg rounded-full transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
+            className="bg-textPrimary dark:bg-darkSecudary p-2 text-white dark:text-darkBorder text-lg rounded-full transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
             onClick={handleClickButtonLogout}
           >
             <RiLogoutBoxLine />
@@ -69,13 +69,13 @@ function HeaderTimeline() {
       ) : (
         <div className="flex items-center gap-2">
           <button 
-            className="bg-white rounded-3xl border border-borderPrimary py-2 px-4 text-sm md:text-base font-bold transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
+            className="bg-white dark:bg-darkSecudary rounded-3xl border border-borderPrimary dark:border-darkBorder dark:text-white py-2 px-4 text-sm md:text-base font-bold transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
             onClick={() => navigate("/login", { state: { tab: 'cadastrar' } })}
           >
             Registrar
           </button>
           <button 
-            className="bg-textPrimary rounded-3xl border border-borderPrimary py-2 px-4 text-sm md:text-base font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
+            className="bg-textPrimary rounded-3xl border border-borderPrimary dark:border-none py-2 px-4 text-sm md:text-base font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
             onClick={() => navigate("/login", { state: { tab: 'login' } })}
           >
             Login

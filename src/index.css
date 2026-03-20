@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
 
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #FAFAFA;
   --color-secundary: #62748E;
   --color-borderPrimary: #E2E8F0;
   --color-textPrimary: #0D93F2;
+
+  --color-darkPrimary: linear-gradient(116.82deg, #0F172B 0%, #070B14 100%);
+  --color-darkTextPrimary: #90A1B9;
+  --color-darkSecudary: #1D293D;
+  --color-darkBorder: #62748E;
+  --color-darkFooter: #0F172B;
+
 }
 
 @layer utilities {
@@ -23,4 +33,9 @@ body {
   background-color: var(--color-primary);
   font-family: "Manrope", sans-serif;
   color: var(--color-secundary);
+}
+
+.dark body {
+  background: var(--color-darkPrimary);
+  color: var(--color-darkTextPrimary); 
 }

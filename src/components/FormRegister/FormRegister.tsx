@@ -26,7 +26,7 @@ function FormRegister() {
   return(
     <>
       <div className="w-full">
-        <h2 className="text-textPrimary text-2xl md:text-[30px] font-bold">Olá, vamos começar!</h2>
+        <h2 className="text-textPrimary dark:text-white text-2xl md:text-[30px] font-bold">Olá, vamos começar!</h2>
         <p className="text-sm md:text-base font-normal">Por favor, insira os dados solicitados para fazer cadastro.</p>
       </div>
 
@@ -79,7 +79,7 @@ function FormRegister() {
         </button>
       </form>
 
-      <p className="text-center text-[12px] font-normal text-[#02274F] w-full max-w-[320px]">
+      <p className="text-center text-[12px] font-normal text-[#02274F] dark:text-darkBorder w-full max-w-[320px]">
         Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.
       </p>
     </>

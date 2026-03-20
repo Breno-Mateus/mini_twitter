@@ -12,11 +12,11 @@ const InputForms = forwardRef<HTMLInputElement, InputFormsProps>(
   ({ label, icon, error, id, ...rest }, ref) => {
     return (
       <div className="flex flex-col gap-1 md:gap-2">
-        <label htmlFor={id} className="text-sm md:text-base font-medium">
+        <label htmlFor={id} className="text-sm md:text-base font-medium dark:text-white">
           {label}
         </label>
         
-        <div className={`bg-white rounded-md border p-3 md:p-4 flex items-center justify-between gap-2
+        <div className={`bg-white dark:bg-darkSecudary rounded-md border dark:border-darkBorder p-3 md:p-4 flex items-center justify-between gap-2
           ${error ? "border-red-500" : "border-borderPrimary"}`}
         >
           <input

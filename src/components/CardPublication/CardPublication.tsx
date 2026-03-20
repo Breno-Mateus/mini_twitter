@@ -26,9 +26,9 @@ function CardPublication() {
   return (
     <form 
       onSubmit={onSubmitForm} 
-      className="border border-borderPrimary rounded-lg shadow-lg p-3 md:p-4 flex flex-col gap-4 bg-white"
+      className="border border-borderPrimary rounded-lg shadow-lg p-3 md:p-4 flex flex-col gap-4 bg-white dark:bg-darkSecudary dark:border-darkBorder"
     >      
-      <div className="flex flex-col gap-1 border-b border-borderPrimary pb-2">
+      <div className="flex flex-col gap-1 border-b border-borderPrimary dark:border-darkBorder pb-2">
         <input 
           type="text"
           placeholder="Título do seu post"
@@ -39,7 +39,7 @@ function CardPublication() {
         {errors.title && <span className="text-red-500 text-xs">{errors.title.message}</span>}
       </div>
 
-      <div className="flex flex-col gap-1 border-b border-borderPrimary pb-2 mt-2">
+      <div className="flex flex-col gap-1 border-b border-borderPrimary dark:border-darkBorder pb-2 mt-2">
         <textarea 
           placeholder="E aí, o que tá rolando?"
           {...register("content")}
@@ -56,7 +56,7 @@ function CardPublication() {
           placeholder="Cole a URL da imagem (opcional, ex: http://.../foto.jpg)"
           {...register("image")}
           className={`w-full text-sm border p-2 rounded focus:outline-none placeholder:text-secundary
-            ${errors.image ? "border-red-500" : "border-borderPrimary"}`}
+            ${errors.image ? "border-red-500" : "border-borderPrimary dark:border-darkBorder"}`}
         />
         {errors.image && <span className="text-red-500 text-xs">{errors.image.message}</span>}
 
@@ -65,7 +65,7 @@ function CardPublication() {
             <img 
               src={imageUrl} 
               alt="Preview" 
-              className="w-full rounded-lg max-h-40 object-cover border border-borderPrimary"
+              className="w-full rounded-lg max-h-40 object-cover border border-borderPrimary dark:border-darkBorder"
               onError={(e) => (e.currentTarget.style.display = 'none')}
             />
           </div>
@@ -75,7 +75,7 @@ function CardPublication() {
       <div className="flex justify-end items-center mt-2">
         <button 
           type="submit"
-          className="bg-textPrimary rounded-3xl border border-borderPrimary py-2 px-6 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 disabled:opacity-50"
+          className="bg-textPrimary rounded-3xl border border-borderPrimary dark:border-none py-2 px-6 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:opacity-90 disabled:opacity-50 hover:cursor-pointer"
           disabled={isPending} 
         >
           {isPending ? "Postando..." : "Postar"}

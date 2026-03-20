@@ -41,7 +41,7 @@ function CardPost({ data }: CardPostProps) {
   }
 
   return (
-    <div className="border border-borderPrimary rounded-lg p-3 md:p-4 flex flex-col gap-3 bg-white">      
+    <div className="border border-borderPrimary rounded-lg p-3 md:p-4 flex flex-col gap-3 bg-white dark:bg-darkSecudary dark:border-darkBorder">      
       
       {isEditing ? (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 text-base">
@@ -86,7 +86,7 @@ function CardPost({ data }: CardPostProps) {
             <button 
               type="button" 
               onClick={cancelEditing}
-              className="flex items-center gap-1 text-sm font-medium bg-borderPrimary px-4 py-1.5 rounded-full hover:opacity-80 transition-opacity disabled:opacity-50 hover:cursor-pointer"
+              className="flex items-center gap-1 text-sm font-medium bg-borderPrimary dark:bg-darkBorder dark:text-white px-4 py-1.5 rounded-full hover:opacity-80 transition-opacity disabled:opacity-50 hover:cursor-pointer"
             >
               <FiX /> Cancelar
             </button>
@@ -104,7 +104,7 @@ function CardPost({ data }: CardPostProps) {
         <>
           <div className="flex justify-between items-start">
             <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs md:text-sm text-gray-500">
-              <p className="font-bold text-sm md:text-base text-black">{data.authorName}</p>
+              <p className="font-bold text-sm md:text-base text-black dark:text-white">{data.authorName}</p>
               <p>@{username}</p>
               <p>• {date}</p>
             </div>
@@ -130,7 +130,7 @@ function CardPost({ data }: CardPostProps) {
           </div>
 
           <div>
-            <p className="font-bold text-base md:text-lg text-black">{data.title}</p>
+            <p className="font-bold text-base md:text-lg text-black dark:text-white">{data.title}</p>
             <p className="text-base whitespace-pre-wrap">{data.content}</p>
           </div>
 
@@ -150,7 +150,7 @@ function CardPost({ data }: CardPostProps) {
               className="flex items-center gap-2 group transition-all"
             >
               <div className={`p-2 rounded-full text-xl transition-colors hover:cursor-pointer
-                ${isLiked ? 'text-red-500 bg-red-50' : 'group-hover:bg-gray-100 group-hover:text-red-400'}`}
+                ${isLiked ? 'text-red-500 bg-red-50 dark:bg-darkBorder' : 'group-hover:bg-gray-100 dark:group-hover:bg-darkBorder group-hover:text-red-400'}`}
               >
                 {isLiked ? <FaHeart/> : <CiHeart />}
               </div>

@@ -17,7 +17,7 @@ function Login() {
       
       <div className="flex flex-col items-center gap-10 md:gap-14 w-full sm:w-120">
         <header>
-          <h1 className="text-textPrimary text-center font-bold text-4xl">Mini Twitter</h1>
+          <h1 className="text-textPrimary dark:text-white text-center font-bold text-4xl">Mini Twitter</h1>
         </header>
 
         <div className="w-full flex justify-between">
