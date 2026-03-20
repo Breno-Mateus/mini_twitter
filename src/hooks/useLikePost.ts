@@ -31,10 +31,9 @@ export function useLikePost({ postId, initialLikesCount }: UseLikePostParams) {
       return;
     }
 
-    if (isLiked) return;
-    setIsLiked(true);
-    setLikesCount(likesCount + 1);
     likeMutation.mutate();
+    setIsLiked(!isLiked);
+    setLikesCount(!isLiked ? likesCount + 1 : likesCount - 1);
   }
 
   return {
