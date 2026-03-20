@@ -1,15 +1,32 @@
-import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../services/api";
 import { useAuthStore } from "../store/authStore";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { CreatePostSchema } from "../schemas/createPostSchema";
+import { createPostSchema } from "../schemas/createPostSchema";
 
 export function useCreatePost() {
   const token = useAuthStore((state) => state.token);
   const queryClient = useQueryClient();
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [imageImageUrl, setImageImageUrl] = useState("");
+  const { 
+    register, 
+    handleSubmit, 
+    reset, 
+    watch,
+    formState: { errors } 
+  } = useForm<CreatePostSchema>({
+    resolver: zodResolver(createPostSchema),
+    defaultValues: {
+      title: "",
+      content: "",
+      image: "",
+    }
+  });
+
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const imageUrl = watch("image");
 
   const mutation = useMutation({
     mutationFn: async (payload: { title: string; content: string; image?: string }) => {
@@ -19,9 +36,7 @@ export function useCreatePost() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
-      setTitle("");
-      setContent("");
-      setImageImageUrl("");
+      reset();
       alert("Post criado com sucesso!");
     },
     onError: (error) => {
@@ -30,26 +45,15 @@ export function useCreatePost() {
     },
   });
 
-  function submitPost() {
-    if (!title.trim() || !content.trim()) {
-      alert("Título e conteúdo são obrigatórios.");
-      return;
-    }
-
-    const payload = {
-      title,
-      content,
-      ...(imageImageUrl.trim() && { image: imageImageUrl.trim() })
-    };
-
-    mutation.mutate(payload);
-  }
+  const submitPost = (data: CreatePostSchema) => {
+    mutation.mutate(data);
+  };
 
   return {
-    title, setTitle,
-    content, setContent,
-    imageImageUrl, setImageImageUrl,
-    submitPost,
+    register,
+    handleSubmit: handleSubmit(submitPost),
+    errors,
+    imageUrl,
     isPending: mutation.isPending,
   };
 }
