@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# Mini Twitter - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte de um teste técnico para um processo seletivo. Ele consiste na interface de um microblogging (Mini Twitter), permitindo funcionalidades como cadastro, login, visualização de feed, criação e busca de publicações.
 
-Currently, two official plugins are available:
+## Importante: Configuração do Backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Para que a aplicação funcione corretamente e consiga realizar as requisições, **é obrigatório rodar o backend em conjunto com este frontend**. 
 
-## React Compiler
+Você pode baixar o código fonte do backend necessário através do link abaixo:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[Download do Backend (Arquivo .zip)](https://t3020915.p.clickup-attachments.com/t3020915/fcf1435e-2f27-4a13-92bf-09eb3ba1b94d/mini-twitter-backend-main.zip)
 
-## Expanding the ESLint configuration
+Certifique-se de extrair o arquivo, instalar as dependências e iniciar o servidor local do backend antes de testar a interface. Consulte a documentação interna do backend para as instruções específicas de inicialização dele.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como rodar o Frontend localmente
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Após iniciar o servidor do backend, siga os passos abaixo para rodar esta interface:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone este repositório para a sua máquina.
+2. Acesse a pasta do projeto no terminal.
+3. Instale as dependências executando:
+   ```bash
+   npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Inicie o servidor de desenvolvimento:
+  ```bash
+   npm run dev
+  ```
+Acesse o endereço local gerado no terminal (geralmente http://localhost:5173) no seu navegador.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tecnologias Utilizadas:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Tailwind CSS (v4)
+
+- Zustand (Gerenciamento de Estado)
+
+- React Hook Form + Zod (Validação de Formulários)
+
+- React Query (Gerenciamento de Requisições)
+
+- React Router DOM (Navegação)
