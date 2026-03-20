@@ -26,14 +26,14 @@ function CardPublication() {
   return (
     <form 
       onSubmit={onSubmitForm} 
-      className="border border-borderPrimary rounded-lg shadow-lg p-4 flex flex-col gap-4 bg-white"
+      className="border border-borderPrimary rounded-lg shadow-lg p-3 md:p-4 flex flex-col gap-4 bg-white"
     >      
       <div className="flex flex-col gap-1 border-b border-borderPrimary pb-2">
         <input 
           type="text"
           placeholder="Título do seu post"
           {...register("title")}
-          className={`w-full text-lg font-bold focus:outline-none placeholder:text-secundary 
+          className={`w-full text-base md:text-lg font-bold focus:outline-none placeholder:text-secundary 
             ${errors.title ? "border-red-500" : ""}`}
         />
         {errors.title && <span className="text-red-500 text-xs">{errors.title.message}</span>}
@@ -60,12 +60,12 @@ function CardPublication() {
         />
         {errors.image && <span className="text-red-500 text-xs">{errors.image.message}</span>}
 
-        {imageUrl && imageUrl.trim() !== "" && !errors.image && (
+        {imageUrl?.trim() && !errors.image && (
           <div className="relative mt-2">
             <img 
               src={imageUrl} 
               alt="Preview" 
-              className="rounded-lg max-h-40 object-cover border border-borderPrimary"
+              className="w-full rounded-lg max-h-40 object-cover border border-borderPrimary"
               onError={(e) => (e.currentTarget.style.display = 'none')}
             />
           </div>

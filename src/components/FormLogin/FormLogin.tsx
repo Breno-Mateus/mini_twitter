@@ -25,12 +25,12 @@ function FormLogin() {
   return(
     <>
       <div className="w-full">
-        <h2 className="text-textPrimary text-[30px] font-bold">Olá, de novo!</h2>
-        <p className="text-base font-normal">Por favor, insira os seus dados para fazer login.</p>
+        <h2 className="text-textPrimary text-2xl md:text-[30px] font-bold">Olá, de novo!</h2>
+        <p className="text-sm md:text-base font-normal">Por favor, insira os seus dados para fazer login.</p>
       </div>
 
       <form 
-        className="w-full flex flex-col gap-5"
+        className="w-full flex flex-col gap-4 md:gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForms
@@ -62,7 +62,9 @@ function FormLogin() {
         </button>
       </form>
 
-      <p className="text-center text-[12px] font-normal text-[#02274F] w-[320px]">Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
+      <p className="text-center text-[12px] font-normal text-[#02274F] w-full max-w-[320px]">
+        Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.
+      </p>
     </>
   );
 }

@@ -41,11 +41,10 @@ function CardPost({ data }: CardPostProps) {
   }
 
   return (
-    <div className="border border-borderPrimary rounded-lg p-4 flex flex-col gap-3 bg-white">      
+    <div className="border border-borderPrimary rounded-lg p-3 md:p-4 flex flex-col gap-3 bg-white">      
       
       {isEditing ? (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 text-base">
-          
           <div className="flex flex-col gap-1">
             <input 
               {...register("title")}
@@ -104,8 +103,8 @@ function CardPost({ data }: CardPostProps) {
       ) : (
         <>
           <div className="flex justify-between items-start">
-            <div className="flex items-center gap-1.5 text-sm text-gray-500">
-              <p className="font-bold text-base text-black">{data.authorName}</p>
+            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs md:text-sm text-gray-500">
+              <p className="font-bold text-sm md:text-base text-black">{data.authorName}</p>
               <p>@{username}</p>
               <p>• {date}</p>
             </div>
@@ -131,7 +130,7 @@ function CardPost({ data }: CardPostProps) {
           </div>
 
           <div>
-            <p className="font-bold text-lg text-black">{data.title}</p>
+            <p className="font-bold text-base md:text-lg text-black">{data.title}</p>
             <p className="text-base whitespace-pre-wrap">{data.content}</p>
           </div>
 

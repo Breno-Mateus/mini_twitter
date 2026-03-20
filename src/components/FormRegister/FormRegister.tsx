@@ -26,12 +26,12 @@ function FormRegister() {
   return(
     <>
       <div className="w-full">
-        <h2 className="text-textPrimary text-[30px] font-bold">Olá, vamos começar!</h2>
-        <p className="text-base font-normal">Por favor, insira os dados solicitados para fazer cadastro.</p>
+        <h2 className="text-textPrimary text-2xl md:text-[30px] font-bold">Olá, vamos começar!</h2>
+        <p className="text-sm md:text-base font-normal">Por favor, insira os dados solicitados para fazer cadastro.</p>
       </div>
 
       <form 
-        className="w-full flex flex-col gap-5"
+        className="w-full flex flex-col gap-4 md:gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForms
@@ -65,7 +65,7 @@ function FormRegister() {
         />
 
         {errorMessage && (
-          <p className="text-red-500 text-sm font-semibold text-center mb-2">
+          <p className="text-red-500 text-sm md:text-base font-semibold text-center mb-1">
             {errorMessage}
           </p>
         )}
@@ -73,13 +73,15 @@ function FormRegister() {
         <button 
           type="submit"
           disabled={isLoading} 
-          className="bg-textPrimary rounded-3xl py-4 text-white text-[16px] font-bold transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
+          className="bg-textPrimary rounded-3xl py-4 text-white text-base font-bold transition-all duration-300 ease-in-out hover:opacity-90 hover:cursor-pointer"
         >
           {isLoading ? "Cadastrando..." : "Continuar"}
         </button>
       </form>
 
-      <p className="text-center text-[12px] font-normal text-[#02274F] w-[320px]">Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
+      <p className="text-center text-[12px] font-normal text-[#02274F] w-full max-w-[320px]">
+        Ao clicar em continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.
+      </p>
     </>
   );
 }

@@ -4,11 +4,10 @@ interface ButtonFormsProps{
   onClick: () => void;
 }
 
-
 function ButtonForms({ text, onClick, active }: ButtonFormsProps){
   return (
     <button 
-      className={`w-1/2 hover:cursor-pointer text-[16px] font-bold ${
+      className={`w-1/2 py-2 md:py-3 hover:cursor-pointer text-sm md:text-base font-bold transition-all ${
         active
           ? "border-textPrimary border-b-3 text-textPrimary"
           : "border-borderPrimary border-b"

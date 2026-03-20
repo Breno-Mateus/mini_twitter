@@ -11,21 +11,25 @@ interface InputFormsProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputForms = forwardRef<HTMLInputElement, InputFormsProps>(
   ({ label, icon, error, id, ...rest }, ref) => {
     return (
-      <div className="flex flex-col gap-2">
-        <label htmlFor={id}>{label}</label>
-        <div className={`bg-white rounded-md border p-4 flex items-center justify-between
+      <div className="flex flex-col gap-1 md:gap-2">
+        <label htmlFor={id} className="text-sm md:text-base font-medium">
+          {label}
+        </label>
+        
+        <div className={`bg-white rounded-md border p-3 md:p-4 flex items-center justify-between gap-2
           ${error ? "border-red-500" : "border-borderPrimary"}`}
         >
           <input
             ref={ref}
             id={id}
-            className="focus:outline-none focus:ring-0 placeholder:text-secundary w-9/12"
+            className="focus:outline-none focus:ring-0 placeholder:text-secundary w-full bg-transparent"
             {...rest}
           />
-          {icon}
+          {icon && <span className="text-secundary shrink-0">{icon}</span>}
         </div>
+        
         {error && (
-          <span className="text-red-500 text-sm">{error.message}</span>
+          <span className="text-red-500 text-xs md:text-sm">{error.message}</span>
         )}
       </div>
     );

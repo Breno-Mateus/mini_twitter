@@ -20,7 +20,7 @@ function Feed() {
    const allPosts = data?.pages.flatMap((pagina) => pagina.posts) || [];
 
   return(
-    <main className="flex-1 overflow-y-auto scrollbar-hide py-9 mx-auto w-full max-w-2xl flex flex-col gap-8">
+    <main className="flex-1 overflow-y-auto scrollbar-hide py-4 md:py-9 px-4 md:px-0 mx-auto w-full max-w-2xl flex flex-col gap-6 md:gap-8">
       <CardPublication />
       
       {isLoading ? (
