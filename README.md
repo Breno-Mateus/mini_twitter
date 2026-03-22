@@ -19,12 +19,17 @@ Após iniciar o servidor do backend, siga os passos abaixo para rodar esta inter
 1. Clone este repositório para a sua máquina.
 2. Acesse a pasta do projeto no terminal.
 3. Instale as dependências executando:
-   ```bash
-   npm install
+  ```bash
+  npm install
+  ```
+**Nota importante:** Se você estiver usando uma versão recente do NPM e encontrar um erro de "Conflicting peer dependency" relacionado ao Vite e Tailwind, rode o comando abaixo para contornar o conflito de versões:
+  ```bash
+  npm install --legacy-peer-deps
+  ```
 
 Inicie o servidor de desenvolvimento:
   ```bash
-   npm run dev
+  npm run dev
   ```
 Acesse o endereço local gerado no terminal (geralmente http://localhost:5173) no seu navegador.
 
